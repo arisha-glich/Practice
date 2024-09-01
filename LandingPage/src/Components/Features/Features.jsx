@@ -33,7 +33,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <div className="bg-white p-8 rounded-md ">
+    <div className="bg-white p-8 rounded-md shadow-lg">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature) => (
           <div
@@ -43,7 +43,7 @@ const FeaturesSection = () => {
             <img
               src={feature.imgSrc}
               alt={feature.altText}
-              className="w-60 h-60 sm:w-20rem sm:h-14rem mb-4 object-contain"
+              className="w-60 h-60 sm:w-30 sm:h-12rem mb-4 object-contain"
             />
           </div>
         ))}

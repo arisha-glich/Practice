@@ -40,7 +40,7 @@ const HowItWorks = () => {
                 alt="Step 1"
                 className="w-full md:w-1/2 rounded-lg shadow-lg mb-4 md:mb-0"
               />
-              <div className="md:ml-4 flex-1 p-4 rounded-lg bg-gray-100">
+              <div className="md:ml-4 flex-1 p-4 rounded-l">
                 {/* Step 1 content */}
               </div>
             </div>
@@ -51,7 +51,7 @@ const HowItWorks = () => {
                 alt="Step 2"
                 className="w-full md:w-1/2 rounded-lg shadow-lg mb-4 md:mb-0"
               />
-              <div className="md:mr-4 flex-1 p-4 rounded-lg bg-gray-100">
+              <div className="md:mr-4 flex-1 p-4 rounded-lg ">
                 {/* Step 2 content */}
               </div>
             </div>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
                 alt="Step 3"
                 className="w-full md:w-1/2 rounded-lg shadow-lg mb-4 md:mb-0"
               />
-              <div className="md:ml-4 flex-1 p-4 rounded-lg bg-gray-100">
+              <div className="md:ml-4 flex-1 p-4 rounded-lg ">
                 {/* Step 3 content */}
               </div>
             </div>
@@ -73,7 +73,7 @@ const HowItWorks = () => {
                 alt="Step 4"
                 className="w-full md:w-1/2 rounded-lg shadow-lg mb-4 md:mb-0"
               />
-              <div className="md:mr-4 flex-1 p-4 rounded-lg bg-gray-100">
+              <div className="md:mr-4 flex-1 p-4 rounded-lg">
                 {/* Step 4 content */}
               </div>
             </div>

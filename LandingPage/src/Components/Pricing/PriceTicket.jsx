@@ -2,7 +2,7 @@ import React from 'react';
 
 const TicketFeeCalculator = () => {
   return (
-    <div className="flex justify-center items-center bg-gray-100 min-h-screen py-8 px-4">
+    <div className="flex justify-center items-center py-8 px-4">
       <div className="w-full max-w-4xl bg-gradient-to-r from-[#F81A84] to-[#2200F3] p-6 rounded-lg shadow-lg">
         {/* Ticket Fee Calculator Header */}
         <h1 className="text-2xl font-bold text-white mb-4">Ticket Fee Calculator</h1>

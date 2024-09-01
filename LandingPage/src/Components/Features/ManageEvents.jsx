@@ -12,10 +12,10 @@ import icon10 from "../../assets/images/icons/10.png";
 
 // FeatureCard component to display individual feature details
 const FeatureCard = ({ icon, title, description }) => (
-  <div className="flex flex-col md:flex-row items-start p-6 bg-white shadow-lg rounded-lg">
-    <img src={icon} alt={title} className="w-24 h-24 md:w-32 md:h-32 mb-4 md:mb-0 object-contain" />
+  <div className="flex w-[565px] h-[172.8px] p-6 bg-white bg-opacity-100 rounded-lg ">
+    <img src={icon} alt={title} className="w-[126px] h-[100px] mr-4 object-contain" />
     <div className="flex flex-col justify-center">
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <h3 className="text-xl font-bold">{title}</h3>
       <p>{description}</p>
     </div>
   </div>
@@ -77,15 +77,13 @@ const Section = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-gray-100 to-white text-black py-12">
-      <section className="container mx-auto px-4 md:px-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-4 text-center">
-          FEATURES
-        </h1>
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">
-          Simplified ticketing with a full suite of features
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+    <div className="min-h-screen bg-gradient-to-r bg-white text-black flex flex-col items-center">
+      <section className=" w-full max-w-6xl "> 
+      <h1 className="text-4xl font-bold text-pink-600">FEATURES</h1>
+
+
+        <h2 className="text-center text-4xl font-semibold mb-8">Simplified ticketing with a full suite of features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {features.map((feature, index) => (
             <FeatureCard 
               key={index} 
@@ -96,6 +94,7 @@ const Section = () => {
           ))}
         </div>
       </section>
+     
     </div>
   );
 };
