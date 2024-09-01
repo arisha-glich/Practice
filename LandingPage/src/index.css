@@ -1,0 +1,9 @@
+
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.my-custom-class {
+  @apply w-[782px] h-[72px] top-[176px] left-[329px] gap-[0px]  bg-white text-[60px] font-bold leading-[72px] text-left font-figtree text-white;
+}
