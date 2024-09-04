@@ -57,9 +57,7 @@ export const FormStep = ({
         <h2 className="text-xl font-bold">{title}</h2>
       </div>
       {description && <p className="text-gray-300 mb-4">{description}</p>}
-      {content && (
-        <div className="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
-      )}
+      {content && <div className="mb-4">{content}</div>}
       <div className="my-4">
         {options.map((option) => (
           <div
