@@ -1,11 +1,8 @@
-// util/localStorage.js
+export const saveToLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
 
-export const saveToLocalStorage = (key, data) => {
-    localStorage.setItem(key, JSON.stringify(data));
-  };
-  
-  export const getFromLocalStorage = (key, defaultValue) => {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : defaultValue;
-  };
-  
+export const getFromLocalStorage = (key, defaultValue) => {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : defaultValue;
+};
