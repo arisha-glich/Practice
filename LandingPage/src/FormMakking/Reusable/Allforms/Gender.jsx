@@ -66,7 +66,7 @@ const Gender = () => {
               title="Female"
               imageUrl={female}
               className={`cursor-pointer ${
-                selections.gender === "Female" ? "bg-red-100" : "bg-white"
+                selections.gender === "Female" ? "bg-green-100" : "bg-white"
               }`}
               onClick={() => handleBoxClick("Female")}
             />
