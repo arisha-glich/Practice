@@ -11,7 +11,7 @@ import Energylevel from "./FormMakking/Reusable/Allforms/EnergyLevel";
 import Mealtype from "./FormMakking/Reusable/Allforms/MealType";
 import Ingredients from "./FormMakking/Reusable/Allforms/Ingredients";
 import PhysicalActivity from "./FormMakking/Reusable/Allforms/PhsyicalActivity";
-import { Result } from "postcss";
+import  Result  from "./FormMakking/Reusable/Allforms/Result";
 
 function App() {
   return (

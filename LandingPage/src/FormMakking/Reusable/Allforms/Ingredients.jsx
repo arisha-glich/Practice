@@ -44,7 +44,7 @@ const Ingredients = () => {
           backgroundColor: "#FFFFFF",
           border: "1px solid #E4EDE7",
           width:" 697px",
-          height: " 100%",
+          height: " 1222",
           top: "40px"
         }}
       >
