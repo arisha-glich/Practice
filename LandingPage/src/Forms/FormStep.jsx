@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { FormContext } from "../Hooks/FormContext";
 import OptionCard from "./OptionCard";
-import backbutton from '../assets/images/next.png'; // Ensure correct path
+import backbutton from "../assets/images/next.png"; // Ensure correct path
 
 const FormStep = React.memo(
-  ({ 
-    title, 
-    description, 
-    options = [], 
-    inputs = [], 
-    content, 
-    onNext, 
-    onBack, 
-    showBack 
+  ({
+    title,
+    description,
+    options = [],
+    inputs = [],
+    content,
+    onNext,
+    onBack,
+    showBack,
   }) => {
     const { formData, setFormData } = useContext(FormContext);
 
@@ -30,16 +30,37 @@ const FormStep = React.memo(
     return (
       <div className="w-full ">
         {showBack && (
-          <button className="absolute top-4 left-4 p-2 bg-gray-100 rounded-full" onClick={onBack}>
+          <button
+            className="absolute top-4 left-4 p-2 bg-gray-100 rounded-full"
+            onClick={onBack}
+          >
             <img src={backbutton} alt="Back" className="w-6 h-6" />
           </button>
         )}
 
-        <h2 className="text-2xl font-bold" style={{ fontFamily: 'Ubuntu', fontSize: '24px', fontWeight: 700, lineHeight: '30px', textAlign: 'center' }}>
+        <h2
+          className="text-2xl font-bold"
+          style={{
+            fontFamily: "Ubuntu",
+            fontSize: "24px",
+            fontWeight: 700,
+            lineHeight: "30px",
+            textAlign: "center",
+          }}
+        >
           {title}
         </h2>
         {description && (
-          <p className="mt-2 text-lg" style={{ fontFamily: 'Ubuntu', fontSize: '16px', fontWeight: 400, lineHeight: '24px', textAlign: 'left' }}>
+          <p
+            className="mt-2 text-lg"
+            style={{
+              fontFamily: "Ubuntu",
+              fontSize: "16px",
+              fontWeight: 400,
+              lineHeight: "24px",
+              textAlign: "left",
+            }}
+          >
             {description}
           </p>
         )}
@@ -47,31 +68,32 @@ const FormStep = React.memo(
         {content && <div className="mt-4">{content}</div>}
 
         {options.length > 0 && (
-  <div className="mt-10">
-    {options.map((option) => (
-      <OptionCard
-        key={option.value}
-        label={option.label}
-      
-        isSelected={formData[title] === option.value}
-        onClick={() => handleOptionSelect(option.value)}
-        style={{ 
-          fontFamily: 'Ubuntu', 
-          fontSize: '12px', 
-          fontWeight: 400, 
-          lineHeight: '13.79px' 
-        }} 
-        className="mb-4" // Add margin-bottom to create space
-      />
-    ))}
-  </div>
-)}
+          <div className="mt-10">
+            {options.map((option) => (
+              <OptionCard
+                key={option.value}
+                label={option.label}
+                isSelected={formData[title] === option.value}
+                onClick={() => handleOptionSelect(option.value)}
+                style={{
+                  fontFamily: "Ubuntu",
+                  fontSize: "12px",
+                  fontWeight: 400,
+                  lineHeight: "13.79px",
+                }}
+                className="mb-4" // Add margin-bottom to create space
+              />
+            ))}
+          </div>
+        )}
 
         {inputs.length > 0 && (
           <div className="mt-4">
             {inputs.map((input) => (
               <div key={input.name} className="mb-4">
-                <label className="block font-semibold mb-2">{input.label}</label>
+                <label className="block font-semibold mb-2">
+                  {input.label}
+                </label>
                 <input
                   type={input.type}
                   name={input.name}
@@ -84,9 +106,11 @@ const FormStep = React.memo(
           </div>
         )}
 
-        {(title === "What is Keto Diet?" || title === "Weight" || title === "Age & Height") && (
+        {(title === "What is Keto Diet?" ||
+          title === "Weight" ||
+          title === "Age & Height") && (
           <div className="mt-8 flex justify-end">
-            <button 
+            <button
               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
               onClick={onNext}
             >

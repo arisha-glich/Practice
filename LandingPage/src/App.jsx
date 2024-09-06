@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
-import FormProvider from './Hooks/FormContext'; // Adjust path as necessary
-import MultiStepForm from './Forms/MultiStepForm'; // Adjust path as necessary
-import './index.css'; // Ensure Tailwind CSS is imported
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import KetoDiet from "./FormMakking/Reusable/Allforms/KetoDiet";
+import EatingHabits from "./FormMakking/Reusable/Allforms/EatingHabit";
+import Meals from "./FormMakking/Reusable/Allforms/Meals";
+import { SurveyProvider } from "./Provider/useSurvery";
+import FimilarKetoDiet from "./FormMakking/Reusable/Allforms/FimilarKetoDiet";
+import Gender from "./FormMakking/Reusable/Allforms/Gender";
+import Whatisketo from "./FormMakking/Reusable/Allforms/Whatisketo";
+import Energylevel from "./FormMakking/Reusable/Allforms/EnergyLevel";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <FormProvider>
-        <MultiStepForm /> 
-      </FormProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function App() {
+  return (
+    <SurveyProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Gender/>} />
+          <Route path="/keto-diet" element={<KetoDiet/>} />
+          <Route path="/eating-habits" element={<EatingHabits />} />
+          <Route path="/fimilarketodiet" element={<FimilarKetoDiet />} />
+          <Route path="/meals" element={<Meals/>} />
+          <Route path="/whatisketo" element={<Whatisketo/>} />
+          <Route path="/energy-level" element={<Energylevel/>} />
+       
+        </Routes>
+      </Router>
+    </SurveyProvider>
+  );
+}
+
+export default App;

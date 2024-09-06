@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import FormStep from './FormStep'; // Adjust the import path as needed
-import steps from '../Data/Steps'; // Import the default export
+import React, { useState } from "react";
+import FormStep from "./FormStep"; // Adjust the import path as needed
+import steps from "../Data/Steps"; // Import the default export
 
 const FormSteps = () => {
   const [currentStep, setCurrentStep] = useState(0);
