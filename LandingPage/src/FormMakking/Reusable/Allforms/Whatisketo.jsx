@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import ProgressCard from "../ProgressCard";
 import BackgroundLayout from "../Backgroung"; // Fixed typo in import
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
 
 const Whatisketo = () => {
   const totalSteps = 12;
-  const [currentStep, setCurrentStep] = useState(4);
+  const { currentStep, setCurrentStep } = useSurveyStore(); // Use Zustand store
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    // Load saved step from localStorage if it exists
-    const savedStep = localStorage.getItem("currentStep");
-    if (savedStep) {
-      setCurrentStep(parseInt(savedStep));
-    }
-  }, []);
+    // Load saved step from Zustand if it exists
+    // If using localStorage as a fallback, you can load it here
+    // localStorage.getItem("currentStep") and set it using setCurrentStep
+  }, [setCurrentStep]);
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
       const nextStep = currentStep + 1;
-      setCurrentStep(nextStep);
+      setCurrentStep(nextStep); // Update step in Zustand store
+      // Save step to localStorage as a fallback
       localStorage.setItem("currentStep", nextStep);
     }
 

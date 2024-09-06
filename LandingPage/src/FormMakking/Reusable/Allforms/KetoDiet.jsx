@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import ProgressCard from '../ProgressCard';
 import LineBox from '../LineBox';
 import BackgroundLayout from '../../Reusable/Backgroung';
-import { useSurvey } from '../../../Provider/useSurvery';
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Update import to use Zustand
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 function KetoDiet() {
-  const { selections, updateSelection } = useSurvey(); // Get context data
+  const { selections, updateSelection } = useSurveyStore(); // Get Zustand store data
   const navigate = useNavigate();
 
   const handleLineBoxClick = (option) => {
-    // Update selection in context
+    // Update selection in Zustand store
     updateSelection('ketoDiet', option);
 
     // Save selected option to local storage
@@ -31,13 +31,11 @@ function KetoDiet() {
   return (
     <BackgroundLayout>
       <div className="flex flex-col justify-center items-center h-screen px-4 py-6">
-        <div
-          className="flex flex-col items-center justify-center w-full max-w-md p-6 rounded-xl bg-white border border-gray-200 shadow-md"
-        >
+        <div className="flex flex-col items-center justify-center w-full max-w-md p-6 rounded-xl bg-white border border-gray-200 shadow-md">
           {/* Upper Progress Card */}
           <ProgressCard
             title="Keto Diet"
-            description="How familiar are you with Keto diet?"
+            description="How familiar are you with the Keto diet?"
             totalSteps={12}
           />
 

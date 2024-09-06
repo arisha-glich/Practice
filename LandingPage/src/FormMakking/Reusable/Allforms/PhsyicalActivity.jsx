@@ -1,8 +1,8 @@
 import React from 'react';
 import ProgressCard from '../ProgressCard';
 import BackgroundLayout from '../Backgroung'; 
-import { useSurvey } from '../../../Provider/useSurvery';
-import { useNavigate } from 'react-router-dom'; // For navigation
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import CustomBox from '../CustomBox';
 import instantlyLow from '../../../assets/images/Activity/1.png';
 import low from '../../../assets/images/Activity/2.png';
@@ -10,11 +10,11 @@ import medium from '../../../assets/images/Activity/3.png';
 import large from '../../../assets/images/Activity/4.png';
 
 function PhysicalActivity() {
-  const { selections, updateSelection } = useSurvey(); // Get context data
+  const { selections, updateSelection } = useSurveyStore(); // Get Zustand store data
   const navigate = useNavigate();
 
   const handleLineBoxClick = (option) => {
-    // Update selection in context
+    // Update selection in Zustand store
     updateSelection('energyLevel', option);
 
     // Save selected option to local storage

@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ProgressCard from '../ProgressCard';
 import LineBox from '../LineBox';
 import BackgroundLayout from '../Backgroung';
 import { useNavigate } from 'react-router-dom'; // For navigation
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
 
 function EatingHabits() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const { selections, updateSelection } = useSurveyStore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Load previously selected option from local storage
-    const storedOption = localStorage.getItem('eatingHabits');
-    setSelectedOption(storedOption);
-  }, []);
+    // Load previously selected option from Zustand
+    const storedOption = selections.eatingHabits;
+    if (storedOption) {
+      // Update local state with the stored value
+      updateSelection('eatingHabits', storedOption);
+    }
+  }, [selections.eatingHabits, updateSelection]);
 
   // Handle LineBox selection
   const handleLineBoxClick = (option) => {
-    // Save selected option to local storage
-    localStorage.setItem('eatingHabits', option);
-    setSelectedOption(option);
+    // Update selection in Zustand store
+    updateSelection('eatingHabits', option);
 
     // Navigate to the Meals component
     navigate('/meals');
@@ -42,23 +45,23 @@ function EatingHabits() {
             <LineBox
               title="3 times"
               description="Eat breakfast, lunch, and dinner"
-              isSelected={selectedOption === '3 times'}
+              isSelected={selections.eatingHabits === '3 times'}
               onClick={() => handleLineBoxClick('3 times')}
-              aria-selected={selectedOption === '3 times' ? 'true' : 'false'}
+              aria-selected={selections.eatingHabits === '3 times' ? 'true' : 'false'}
             />
             <LineBox
               title="4 times"
               description="Eat breakfast, lunch, dinner, and a snack"
-              isSelected={selectedOption === '4 times'}
+              isSelected={selections.eatingHabits === '4 times'}
               onClick={() => handleLineBoxClick('4 times')}
-              aria-selected={selectedOption === '4 times' ? 'true' : 'false'}
+              aria-selected={selections.eatingHabits === '4 times' ? 'true' : 'false'}
             />
             <LineBox
               title="5 times"
               description="Eat breakfast, lunch, dinner, and two snacks"
-              isSelected={selectedOption === '5 times'}
+              isSelected={selections.eatingHabits === '5 times'}
               onClick={() => handleLineBoxClick('5 times')}
-              aria-selected={selectedOption === '5 times' ? 'true' : 'false'}
+              aria-selected={selections.eatingHabits === '5 times' ? 'true' : 'false'}
             />
           </div>
         </div>

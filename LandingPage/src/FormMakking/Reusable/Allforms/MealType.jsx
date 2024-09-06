@@ -1,40 +1,42 @@
-import React, { useState } from "react";
-import OptionBox from "../OptionBox";
-import poultryImg from "../../../assets/images/MealsType/1.png";
-import porkImg from "../../../assets/images/MealsType/2.png";
-import beefImg from "../../../assets/images/MealsType/3.png";
-import fishImg from "../../../assets/images/MealsType/4.png";
-import lambImg from "../../../assets/images/MealsType/5.png";
-import vealImg from "../../../assets/images/MealsType/6.png";
-import vegetarianImg from "../../../assets/images/MealsType/7.png";
-import ProgressCard from "../ProgressCard";
-import BackgroundLayout from "../Backgroung";
-import { useNavigate } from "react-router-dom"; // For navigation
+import React from 'react';
+import OptionBox from '../OptionBox';
+import poultryImg from '../../../assets/images/MealsType/1.png';
+import porkImg from '../../../assets/images/MealsType/2.png';
+import beefImg from '../../../assets/images/MealsType/3.png';
+import fishImg from '../../../assets/images/MealsType/4.png';
+import lambImg from '../../../assets/images/MealsType/5.png';
+import vealImg from '../../../assets/images/MealsType/6.png';
+import vegetarianImg from '../../../assets/images/MealsType/7.png';
+import ProgressCard from '../ProgressCard';
+import BackgroundLayout from '../Backgroung';
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Mealtype = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const { selections, updateSelection } = useSurveyStore(); // Get Zustand store data
   const navigate = useNavigate();
 
   const handleOptionClick = (option) => {
     // Toggle selection
-    setSelectedOptions((prevSelected) =>
-      prevSelected.includes(option)
-        ? prevSelected.filter((item) => item !== option) // Unselect if already selected
-        : [...prevSelected, option] // Add to selected list
-    );
+    const updatedOptions = selections.mealTypes.includes(option)
+      ? selections.mealTypes.filter((item) => item !== option)
+      : [...selections.mealTypes, option];
+
+    // Update selection in Zustand store
+    updateSelection('mealTypes', updatedOptions);
+
+    // Save selected options to localStorage
+    localStorage.setItem('selectedMealTypes', JSON.stringify(updatedOptions));
   };
 
   const handleNextClick = () => {
-    // Save selected options to localStorage or handle them as needed
-    localStorage.setItem("selectedMealTypes", JSON.stringify(selectedOptions));
-
     // Navigate to the next screen (update path based on routing)
-    navigate("/ingredients");
+    navigate('/ingredients');
   };
 
   return (
     <BackgroundLayout>
-      <div className="flex flex-col justify-center items-center min-h-screen px-4 py-6">
+      <div className="flex flex-col justify-center items-center min-h-screen px-4 py-6 relative">
         <div
           className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-xl bg-white border border-gray-200 shadow-md"
         >
@@ -47,48 +49,24 @@ const Mealtype = () => {
 
           {/* Reusable Option Boxes */}
           <div className="flex flex-col items-center space-y-4 mt-8 w-full">
-            <OptionBox
-              image={poultryImg}
-              title="Poultry"
-              isSelected={selectedOptions.includes("Poultry")}
-              onClick={() => handleOptionClick("Poultry")}
-            />
-            <OptionBox
-              image={porkImg}
-              title="Pork"
-              isSelected={selectedOptions.includes("Pork")}
-              onClick={() => handleOptionClick("Pork")}
-            />
-            <OptionBox
-              image={beefImg}
-              title="Beef"
-              isSelected={selectedOptions.includes("Beef")}
-              onClick={() => handleOptionClick("Beef")}
-            />
-            <OptionBox
-              image={fishImg}
-              title="Fish"
-              isSelected={selectedOptions.includes("Fish")}
-              onClick={() => handleOptionClick("Fish")}
-            />
-            <OptionBox
-              image={lambImg}
-              title="Lamb"
-              isSelected={selectedOptions.includes("Lamb")}
-              onClick={() => handleOptionClick("Lamb")}
-            />
-            <OptionBox
-              image={vealImg}
-              title="Veal"
-              isSelected={selectedOptions.includes("Veal")}
-              onClick={() => handleOptionClick("Veal")}
-            />
-            <OptionBox
-              image={vegetarianImg}
-              title="I am vegetarian"
-              isSelected={selectedOptions.includes("Vegetarian")}
-              onClick={() => handleOptionClick("Vegetarian")}
-            />
+            {[
+              { title: 'Poultry', image: poultryImg },
+              { title: 'Pork', image: porkImg },
+              { title: 'Beef', image: beefImg },
+              { title: 'Fish', image: fishImg },
+              { title: 'Lamb', image: lambImg },
+              { title: 'Veal', image: vealImg },
+              { title: 'I am vegetarian', image: vegetarianImg },
+            ].map((item) => (
+              <OptionBox
+                key={item.title}
+                image={item.image}
+                title={item.title}
+                isSelected={selections.mealTypes.includes(item.title)} // Mark selected
+                onClick={() => handleOptionClick(item.title)}
+                aria-selected={selections.mealTypes.includes(item.title) ? 'true' : 'false'}
+              />
+            ))}
           </div>
 
           {/* Next Button */}

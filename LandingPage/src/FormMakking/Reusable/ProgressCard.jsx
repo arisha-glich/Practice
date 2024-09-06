@@ -6,7 +6,7 @@ import Stroke from '../../assets/images/Stroke.png';
 import Dot from '../../assets/images/Dot.png';
 
 const ProgressCard = ({ title, description, totalSteps }) => {
-  const [currentStep, setCurrentStep] = useState(2); // Set to 2 as per the image
+  const [currentStep, setCurrentStep] = useState(1); // Set to 2 as per the image
 
   // Increment and decrement step functions
   const incrementStep = () => {

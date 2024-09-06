@@ -2,19 +2,16 @@ import React from 'react';
 import ProgressCard from '../ProgressCard';
 import LineBox from '../LineBox';
 import BackgroundLayout from '../Backgroung';
-import { useSurvey } from '../../../Provider/useSurvery';
+import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 function FimilarKetoDiet() {
-  const { selections, updateSelection } = useSurvey(); // Get context data
+  const { selections, updateSelection } = useSurveyStore(); // Use Zustand store
   const navigate = useNavigate();
 
   const handleLineBoxClick = (option) => {
-    // Update selection in context
+    // Update selection in Zustand store
     updateSelection('ketoDiet', option);
-
-    // Save selected option to local storage
-    localStorage.setItem('ketoDiet', option);
 
     // Navigate to the next step
     navigate('/eating-habits'); 

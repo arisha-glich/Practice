@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import OptionBox from "../OptionBox"; // Reusable OptionBox component
 import onionImg from "../../../assets/images/Ingredients/1.png";
 import mushroomImg from "../../../assets/images/Ingredients/2.png";
@@ -15,17 +15,14 @@ import food from "../../../assets/images/Ingredients/14.png";
 import ProgressCard from "../ProgressCard";
 import BackgroundLayout from "../Backgroung";
 import { useNavigate } from "react-router-dom";
+import useSurveyStore from "../../../Provider/useSurveyStore"; // Import Zustand store
 
 const Ingredients = () => {
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const { selectedIngredients, updateIngredients } = useSurveyStore(); // Use Zustand store
   const navigate = useNavigate();
 
   const handleIngredientClick = (ingredient) => {
-    setSelectedIngredients((prevSelected) =>
-      prevSelected.includes(ingredient)
-        ? prevSelected.filter((item) => item !== ingredient) // Unselect if already selected
-        : [...prevSelected, ingredient] // Add to selected list
-    );
+    updateIngredients(ingredient); // Update Zustand store
   };
 
   const handleNextClick = () => {
@@ -39,13 +36,12 @@ const Ingredients = () => {
   return (
     <BackgroundLayout>
       <div
-        className="flex flex-col h-screen"
+        className="flex flex-col max-h-[70vh] relative"
         style={{
           backgroundColor: "#FFFFFF",
           border: "1px solid #E4EDE7",
-          width:" 697px",
-          height: " 1222",
-          top: "40px"
+          width: "697px",
+          padding: "16px", // Added padding to ensure content doesn't touch the edges
         }}
       >
         {/* Upper Progress Card */}
@@ -56,10 +52,10 @@ const Ingredients = () => {
         />
 
         {/* Reusable Option Boxes */}
-        <div className="flex flex-col items-center space-y-4 mt-8 px-4">
-        <OptionBox
+        <div className="flex flex-col items-center space-y-4 overflow-auto mt-8">
+          <OptionBox
             image={food}
-            title="I eat all them"
+            title="I eat all of them"
             isSelected={selectedIngredients.includes("")}
             onClick={() => handleIngredientClick("")}
           />
