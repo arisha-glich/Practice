@@ -6,34 +6,30 @@ const BoxComponent = ({
   className = "",
   titleClassName = "",
   imageClassName = "",
-  onClick, // Added onClick for interaction
+  onClick,
 }) => {
   return (
     <div
       onClick={onClick}
-      className={`relative w-[361px] h-[99px] rounded-[30px] border-[1px] border-r-0 border-[#b6bcb8] bg-white ${className}`}
+      className={`relative w-[361px] h-[99px] rounded-[30px] border-[1px] border-[#b6bcb8] flex items-center justify-between px-5 cursor-pointer ${className}`}
     >
-      {/* Container for Title and Image */}
-      <div className="flex flex-col  h-full">
-        {/* Title */}
-        {title && (
-          <div
-            className={`text-[#000]  justify-center m-3  font-ubuntu text-[24px] font-bold top-6 leading-[27.58px] text-center ${titleClassName}`}
-          >
-            {title}
-          </div>
-        )}
-        {/* Image */}
-        {imageUrl && (
-          <div className={`flex  ${imageClassName}`}>
-            <img
-              src={imageUrl}
-              alt={title}
-              className=" justify-start w-14 h-10"
-            />
-          </div>
-        )}
-      </div>
+      {/* Image on the left */}
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt={title}
+          className={`w-8 h-8 ${imageClassName}`} // Adjusted size for closer match
+        />
+      )}
+
+      {/* Title in the center */}
+      {title && (
+        <div
+          className={`text-[#000] font-ubuntu text-[24px] font-bold leading-[27.58px] text-center flex-1 ${titleClassName}`}
+        >
+          {title}
+        </div>
+      )}
     </div>
   );
 };
