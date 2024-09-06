@@ -15,7 +15,7 @@ const BackgroundLayout = ({ children }) => {
   };
 
   return (
-    <div className="w-full h-screen bg-[#F0F4F8] flex flex-col items-center justify-center relative">
+    <div className="w-full h-screen bg-[#F0F4F8] flex flex-col items-center justify-center absolute">
       {/* Logo */}
       <img src={logo} alt="Logo" className="absolute top-12 w-100 h-auto" />
 
