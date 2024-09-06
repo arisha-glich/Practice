@@ -29,16 +29,9 @@ function Meals() {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: '697px',
-            height: '486px',
-            borderRadius: '30px',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E4EDE7',
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-xl bg-white border border-gray-200 shadow-md"
         >
           {/* Upper Progress Card */}
           <ProgressCard
@@ -48,26 +41,28 @@ function Meals() {
           />
 
           {/* Lower LineBoxes */}
-          <LineBox
-            title="30 min"
-            onClick={() => handleLineBoxClick('30 min')}
-            isSelected={selectedOption === '30 min'}
-          />
-          <LineBox
-            title="1 hour"
-            onClick={() => handleLineBoxClick('1 hour')}
-            isSelected={selectedOption === '1 hour'}
-          />
-          <LineBox
-            title="1.5 hours"
-            onClick={() => handleLineBoxClick('1.5 hours')}
-            isSelected={selectedOption === '1.5 hours'}
-          />
-          <LineBox
-            title="2 hours"
-            onClick={() => handleLineBoxClick('2 hours')}
-            isSelected={selectedOption === '2 hours'}
-          />
+          <div className="flex flex-col mt-6 space-y-4 w-full">
+            <LineBox
+              title="30 min"
+              onClick={() => handleLineBoxClick('30 min')}
+              isSelected={selectedOption === '30 min'}
+            />
+            <LineBox
+              title="1 hour"
+              onClick={() => handleLineBoxClick('1 hour')}
+              isSelected={selectedOption === '1 hour'}
+            />
+            <LineBox
+              title="1.5 hours"
+              onClick={() => handleLineBoxClick('1.5 hours')}
+              isSelected={selectedOption === '1.5 hours'}
+            />
+            <LineBox
+              title="2 hours"
+              onClick={() => handleLineBoxClick('2 hours')}
+              isSelected={selectedOption === '2 hours'}
+            />
+          </div>
         </div>
       </div>
     </BackgroundLayout>

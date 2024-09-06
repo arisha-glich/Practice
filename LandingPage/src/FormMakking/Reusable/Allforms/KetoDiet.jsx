@@ -30,16 +30,9 @@ function KetoDiet() {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: '697px',
-            height: '479px',
-            borderRadius: '30px',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E4EDE7',
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-md p-6 rounded-xl bg-white border border-gray-200 shadow-md"
         >
           {/* Upper Progress Card */}
           <ProgressCard
@@ -49,15 +42,17 @@ function KetoDiet() {
           />
 
           {/* Lower LineBoxes */}
-          {['Lose Weight', 'Gain Weight', 'Maintain Weight', 'Reverse Diet', "I Don't Know"].map((option) => (
-            <LineBox
-              key={option}
-              title={option}
-              isSelected={selections.ketoDiet === option} // Mark selected
-              onClick={() => handleLineBoxClick(option)}
-              aria-selected={selections.ketoDiet === option ? 'true' : 'false'}
-            />
-          ))}
+          <div className="flex flex-col mt-6 space-y-4 w-full">
+            {['Lose Weight', 'Gain Weight', 'Maintain Weight', 'Reverse Diet', "I Don't Know"].map((option) => (
+              <LineBox
+                key={option}
+                title={option}
+                isSelected={selections.ketoDiet === option} // Mark selected
+                onClick={() => handleLineBoxClick(option)}
+                aria-selected={selections.ketoDiet === option ? 'true' : 'false'}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </BackgroundLayout>

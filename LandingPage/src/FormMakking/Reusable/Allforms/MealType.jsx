@@ -32,84 +32,75 @@ const Mealtype = () => {
     navigate("/ingredients");
   };
 
-
   return (
-    <BackgroundLayout >
-          <div className="flex justify-center items-center h-screen">
-      <div
-        className="flex flex-col items-center justify-center"
-        style={{
-          width: "697px",
-          height: "789px",
-          borderRadius: "30px",
-          backgroundColor: "#FFFFFF",
-          border: "1px solid #E4EDE7",
-          top:"344px"
-        }}
-      >
-        {/* Upper Progress Card */}
-        <ProgressCard
-          title="Meal Type"
-          description="Which type of meal you don't like"
-          totalSteps={12}
-        />
+    <BackgroundLayout>
+      <div className="flex flex-col justify-center items-center min-h-screen px-4 py-6">
+        <div
+          className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-xl bg-white border border-gray-200 shadow-md"
+        >
+          {/* Upper Progress Card */}
+          <ProgressCard
+            title="Meal Type"
+            description="Which types of meals do you dislike?"
+            totalSteps={12}
+          />
 
-        {/* Reusable Option Boxes */}
-        <div className="flex flex-col items-center space-y-4 mt-8">
-          <OptionBox
-            image={poultryImg}
-            title="Poultry"
-            isSelected={selectedOptions.includes("Poultry")}
-            onClick={() => handleOptionClick("Poultry")}
-          />
-          <OptionBox
-            image={porkImg}
-            title="Pork"
-            isSelected={selectedOptions.includes("Pork")}
-            onClick={() => handleOptionClick("Pork")}
-          />
-          <OptionBox
-            image={beefImg}
-            title="Beef"
-            isSelected={selectedOptions.includes("Beef")}
-            onClick={() => handleOptionClick("Beef")}
-          />
-          <OptionBox
-            image={fishImg}
-            title="Fish"
-            isSelected={selectedOptions.includes("Fish")}
-            onClick={() => handleOptionClick("Fish")}
-          />
-          <OptionBox
-            image={lambImg}
-            title="Lamb"
-            isSelected={selectedOptions.includes("Lamb")}
-            onClick={() => handleOptionClick("Lamb")}
-          />
-          <OptionBox
-            image={vealImg}
-            title="Veal"
-            isSelected={selectedOptions.includes("Veal")}
-            onClick={() => handleOptionClick("Veal")}
-          />
-          <OptionBox
-            image={vegetarianImg}
-            title="I am vegetarian"
-            isSelected={selectedOptions.includes("Vegetarian")}
-            onClick={() => handleOptionClick("Vegetarian")}
-          />
-        </div>
+          {/* Reusable Option Boxes */}
+          <div className="flex flex-col items-center space-y-4 mt-8 w-full">
+            <OptionBox
+              image={poultryImg}
+              title="Poultry"
+              isSelected={selectedOptions.includes("Poultry")}
+              onClick={() => handleOptionClick("Poultry")}
+            />
+            <OptionBox
+              image={porkImg}
+              title="Pork"
+              isSelected={selectedOptions.includes("Pork")}
+              onClick={() => handleOptionClick("Pork")}
+            />
+            <OptionBox
+              image={beefImg}
+              title="Beef"
+              isSelected={selectedOptions.includes("Beef")}
+              onClick={() => handleOptionClick("Beef")}
+            />
+            <OptionBox
+              image={fishImg}
+              title="Fish"
+              isSelected={selectedOptions.includes("Fish")}
+              onClick={() => handleOptionClick("Fish")}
+            />
+            <OptionBox
+              image={lambImg}
+              title="Lamb"
+              isSelected={selectedOptions.includes("Lamb")}
+              onClick={() => handleOptionClick("Lamb")}
+            />
+            <OptionBox
+              image={vealImg}
+              title="Veal"
+              isSelected={selectedOptions.includes("Veal")}
+              onClick={() => handleOptionClick("Veal")}
+            />
+            <OptionBox
+              image={vegetarianImg}
+              title="I am vegetarian"
+              isSelected={selectedOptions.includes("Vegetarian")}
+              onClick={() => handleOptionClick("Vegetarian")}
+            />
+          </div>
 
-        {/* Next Button */}
-        <div className="flex justify-center mt-8">
-          <button
-            className="bg-green-500 text-white px-6 py-2 rounded-md"
-            onClick={handleNextClick}
-          >
-            Next
-          </button>
+          {/* Next Button */}
+          <div className="flex justify-center mt-8">
+            <button
+              className="bg-green-500 text-white px-6 py-2 rounded-md"
+              onClick={handleNextClick}
+            >
+              Next
+            </button>
+          </div>
         </div>
-      </div>
       </div>
     </BackgroundLayout>
   );

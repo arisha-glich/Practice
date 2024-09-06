@@ -35,27 +35,20 @@ const Gender = () => {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: "697px",
-            height: "429px",
-            borderRadius: "30px",
-            backgroundColor: "#FFFFFF",
-            border: "1px solid #E4EDE7",
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-md p-6 sm:p-8 rounded-lg border border-[#E4EDE7] bg-white"
         >
           {/* Upper Progress Card */}
           <ProgressCard title="Gender" totalSteps={12} />
 
           {/* Gender Options */}
-          <div className="flex flex-col mt-2 space-y-4">
+          <div className="flex flex-col mt-4 space-y-4 w-full">
             {/* Male Option */}
             <BoxComponent
               title="Male"
               imageUrl={male}
-              className={`cursor-pointer ${
+              className={`cursor-pointer w-full sm:w-[300px] ${
                 selections.gender === "Male" ? "bg-green-100" : "bg-white"
               }`}
               onClick={() => handleBoxClick("Male")}
@@ -65,7 +58,7 @@ const Gender = () => {
             <BoxComponent
               title="Female"
               imageUrl={female}
-              className={`cursor-pointer ${
+              className={`cursor-pointer w-full sm:w-[300px] ${
                 selections.gender === "Female" ? "bg-green-100" : "bg-white"
               }`}
               onClick={() => handleBoxClick("Female")}

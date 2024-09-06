@@ -26,16 +26,9 @@ function EatingHabits() {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: '697px',
-            height: '425px',
-            borderRadius: '30px',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E4EDE7',
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-lg border border-[#E4EDE7] bg-white"
         >
           {/* Upper Progress Card */}
           <ProgressCard
@@ -45,27 +38,29 @@ function EatingHabits() {
           />
 
           {/* Lower LineBoxes */}
-          <LineBox
-            title="3 times"
-            description="Eat breakfast, lunch, and dinner"
-            isSelected={selectedOption === '3 times'} // Mark selected
-            onClick={() => handleLineBoxClick('3 times')}
-            aria-selected={selectedOption === '3 times' ? 'true' : 'false'}
-          />
-          <LineBox
-            title="4 times"
-            description="Eat breakfast, lunch, dinner, and a snack"
-            isSelected={selectedOption === '4 times'} // Mark selected
-            onClick={() => handleLineBoxClick('4 times')}
-            aria-selected={selectedOption === '4 times' ? 'true' : 'false'}
-          />
-          <LineBox
-            title="5 times"
-            description="Eat breakfast, lunch, dinner, and two snacks"
-            isSelected={selectedOption === '5 times'} // Mark selected
-            onClick={() => handleLineBoxClick('5 times')}
-            aria-selected={selectedOption === '5 times' ? 'true' : 'false'}
-          />
+          <div className="flex flex-col mt-4 space-y-4 w-full">
+            <LineBox
+              title="3 times"
+              description="Eat breakfast, lunch, and dinner"
+              isSelected={selectedOption === '3 times'}
+              onClick={() => handleLineBoxClick('3 times')}
+              aria-selected={selectedOption === '3 times' ? 'true' : 'false'}
+            />
+            <LineBox
+              title="4 times"
+              description="Eat breakfast, lunch, dinner, and a snack"
+              isSelected={selectedOption === '4 times'}
+              onClick={() => handleLineBoxClick('4 times')}
+              aria-selected={selectedOption === '4 times' ? 'true' : 'false'}
+            />
+            <LineBox
+              title="5 times"
+              description="Eat breakfast, lunch, dinner, and two snacks"
+              isSelected={selectedOption === '5 times'}
+              onClick={() => handleLineBoxClick('5 times')}
+              aria-selected={selectedOption === '5 times' ? 'true' : 'false'}
+            />
+          </div>
         </div>
       </div>
     </BackgroundLayout>

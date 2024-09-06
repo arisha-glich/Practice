@@ -22,16 +22,9 @@ function FimilarKetoDiet() {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: '697px',
-            height: '425px',
-            borderRadius: '30px',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E4EDE7',
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-lg border border-[#E4EDE7] bg-white shadow-md"
         >
           {/* Upper Progress Card */}
           <ProgressCard
@@ -41,24 +34,26 @@ function FimilarKetoDiet() {
           />
 
           {/* Lower LineBoxes */}
-          <LineBox
-            title="Expert"
-            isSelected={selections.ketoDiet === 'Expert'} // Mark selected
-            onClick={() => handleLineBoxClick('Expert')}
-            aria-selected={selections.ketoDiet === 'Expert' ? 'true' : 'false'}
-          />
-          <LineBox
-            title="I have heard a thing or two"
-            isSelected={selections.ketoDiet === 'I have heard a thing or two'} // Mark selected
-            onClick={() => handleLineBoxClick('I have heard a thing or two')}
-            aria-selected={selections.ketoDiet === 'I have heard a thing or two' ? 'true' : 'false'}
-          />
-          <LineBox
-            title="Beginner"
-            isSelected={selections.ketoDiet === 'Beginner'} // Mark selected
-            onClick={() => handleLineBoxClick('Beginner')}
-            aria-selected={selections.ketoDiet === 'Beginner' ? 'true' : 'false'}
-          />
+          <div className="flex flex-col gap-4 mt-4 w-full">
+            <LineBox
+              title="Expert"
+              isSelected={selections.ketoDiet === 'Expert'} // Mark selected
+              onClick={() => handleLineBoxClick('Expert')}
+              aria-selected={selections.ketoDiet === 'Expert' ? 'true' : 'false'}
+            />
+            <LineBox
+              title="I have heard a thing or two"
+              isSelected={selections.ketoDiet === 'I have heard a thing or two'} // Mark selected
+              onClick={() => handleLineBoxClick('I have heard a thing or two')}
+              aria-selected={selections.ketoDiet === 'I have heard a thing or two' ? 'true' : 'false'}
+            />
+            <LineBox
+              title="Beginner"
+              isSelected={selections.ketoDiet === 'Beginner'} // Mark selected
+              onClick={() => handleLineBoxClick('Beginner')}
+              aria-selected={selections.ketoDiet === 'Beginner' ? 'true' : 'false'}
+            />
+          </div>
         </div>
       </div>
     </BackgroundLayout>

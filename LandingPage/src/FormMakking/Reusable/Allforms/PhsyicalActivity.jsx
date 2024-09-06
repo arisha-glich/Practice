@@ -9,7 +9,6 @@ import low from '../../../assets/images/Activity/2.png';
 import medium from '../../../assets/images/Activity/3.png';
 import large from '../../../assets/images/Activity/4.png';
 
-
 function PhysicalActivity() {
   const { selections, updateSelection } = useSurvey(); // Get context data
   const navigate = useNavigate();
@@ -27,18 +26,9 @@ function PhysicalActivity() {
 
   return (
     <BackgroundLayout>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen px-4 py-6">
         <div
-          className="flex flex-col items-center justify-center"
-          style={{
-            width: '500px',
-            height: '475px',
-            borderRadius: '30px',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E4EDE7',
-            padding: '50px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          }}
+          className="flex flex-col items-center justify-center w-full max-w-lg p-6 rounded-xl bg-white border border-gray-200 shadow-md"
         >
           {/* Upper Progress Card */}
           <ProgressCard
@@ -48,9 +38,9 @@ function PhysicalActivity() {
           />
 
           {/* Custom Boxes */}
-          <div className="flex flex-wrap justify-between mt-4">
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
             <CustomBox
-              title="Sadentry"
+              title="Instantly Low"
               imageUrl={instantlyLow}
               onClick={() => handleLineBoxClick('Instantly Low')}
               isSelected={selections.energyLevel === 'Instantly Low'}
@@ -59,7 +49,7 @@ function PhysicalActivity() {
               borderCircleColor="#F4D4D4" // Light red color
             />
             <CustomBox
-              title="Live Active"
+              title="Low"
               imageUrl={low}
               onClick={() => handleLineBoxClick('Low')}
               isSelected={selections.energyLevel === 'Low'}
@@ -76,11 +66,11 @@ function PhysicalActivity() {
               imageSize="18px"
               borderCircleColor="#F6F1B2" // Light green-yellow color
             />
-              <CustomBox
+            <CustomBox
               title="Hard"
               imageUrl={large}
-              onClick={() => handleLineBoxClick('Average')}
-              isSelected={selections.energyLevel === 'Average'}
+              onClick={() => handleLineBoxClick('Hard')}
+              isSelected={selections.energyLevel === 'Hard'}
               borderCircleSize="55px"
               imageSize="18px"
               borderCircleColor="#F6F1B2" // Light green-yellow color
