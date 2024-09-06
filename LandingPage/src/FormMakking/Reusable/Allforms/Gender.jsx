@@ -11,11 +11,14 @@ const Gender = () => {
   const { selections, updateSelection } = useSurvey();
   const navigate = useNavigate();
 
-  // When component mounts, load the stored gender from local storage if it exists
+  // Check local storage for saved gender on component mount
   useEffect(() => {
     const savedGender = localStorage.getItem("gender");
     if (savedGender) {
       updateSelection("gender", savedGender);
+    } else {
+      // If no gender is saved in local storage, make sure to clear the context as well
+      updateSelection("gender", ""); // Clear the gender selection in the context
     }
   }, [updateSelection]);
 
@@ -63,7 +66,7 @@ const Gender = () => {
               title="Female"
               imageUrl={female}
               className={`cursor-pointer ${
-                selections.gender === "Female" ? "bg-green-100" : "bg-white"
+                selections.gender === "Female" ? "bg-red-100" : "bg-white"
               }`}
               onClick={() => handleBoxClick("Female")}
             />
