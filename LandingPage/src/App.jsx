@@ -8,6 +8,10 @@ import FimilarKetoDiet from "./FormMakking/Reusable/Allforms/FimilarKetoDiet";
 import Gender from "./FormMakking/Reusable/Allforms/Gender";
 import Whatisketo from "./FormMakking/Reusable/Allforms/Whatisketo";
 import Energylevel from "./FormMakking/Reusable/Allforms/EnergyLevel";
+import Mealtype from "./FormMakking/Reusable/Allforms/MealType";
+import Ingredients from "./FormMakking/Reusable/Allforms/Ingredients";
+import PhysicalActivity from "./FormMakking/Reusable/Allforms/PhsyicalActivity";
+import { Result } from "postcss";
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
           <Route path="/meals" element={<Meals/>} />
           <Route path="/whatisketo" element={<Whatisketo/>} />
           <Route path="/energy-level" element={<Energylevel/>} />
+          <Route path="/meal-type" element={<Mealtype/>} />
+          <Route path="/ingredients" element={<Ingredients/>} />
+          <Route path="/physical-activity" element={<PhysicalActivity/>} />
+          <Route path="/result" element={<Result/>} />
        
         </Routes>
       </Router>

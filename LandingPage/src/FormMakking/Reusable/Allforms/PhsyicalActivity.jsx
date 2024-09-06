@@ -4,14 +4,13 @@ import BackgroundLayout from '../Backgroung';
 import { useSurvey } from '../../../Provider/useSurvery';
 import { useNavigate } from 'react-router-dom'; // For navigation
 import CustomBox from '../CustomBox';
-import instantlyLow from '../../../assets/images/1.png';
-import low from '../../../assets/images/2.png';
-import medium from '../../../assets/images/3.png';
-import high from '../../../assets/images/4.png';
-import large from '../../../assets/images/5.png';
-import moreLarge from '../../../assets/images/6.png';
+import instantlyLow from '../../../assets/images/Activity/1.png';
+import low from '../../../assets/images/Activity/2.png';
+import medium from '../../../assets/images/Activity/3.png';
+import large from '../../../assets/images/Activity/4.png';
 
-function Energylevel() {
+
+function PhysicalActivity() {
   const { selections, updateSelection } = useSurvey(); // Get context data
   const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ function Energylevel() {
     localStorage.setItem('energyLevel', option);
 
     // Navigate to the next step
-    navigate('/meal-type'); 
+    navigate('/result'); 
   };
 
   return (
@@ -32,12 +31,12 @@ function Energylevel() {
         <div
           className="flex flex-col items-center justify-center"
           style={{
-            width: '697px',
+            width: '500px',
             height: '475px',
             borderRadius: '30px',
             backgroundColor: '#FFFFFF',
             border: '1px solid #E4EDE7',
-            padding: '40px',
+            padding: '50px',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
           }}
         >
@@ -51,7 +50,7 @@ function Energylevel() {
           {/* Custom Boxes */}
           <div className="flex flex-wrap justify-between mt-4">
             <CustomBox
-              title="Instantly Low"
+              title="Sadentry"
               imageUrl={instantlyLow}
               onClick={() => handleLineBoxClick('Instantly Low')}
               isSelected={selections.energyLevel === 'Instantly Low'}
@@ -60,7 +59,7 @@ function Energylevel() {
               borderCircleColor="#F4D4D4" // Light red color
             />
             <CustomBox
-              title="Low"
+              title="Live Active"
               imageUrl={low}
               onClick={() => handleLineBoxClick('Low')}
               isSelected={selections.energyLevel === 'Low'}
@@ -77,32 +76,14 @@ function Energylevel() {
               imageSize="18px"
               borderCircleColor="#F6F1B2" // Light green-yellow color
             />
-            <CustomBox
-              title="Above Average"
-              imageUrl={high}
-              onClick={() => handleLineBoxClick('Above Average')}
-              isSelected={selections.energyLevel === 'Above Average'}
-              borderCircleSize="55px"
-              imageSize="18px"
-              borderCircleColor="#E4F5B1" // Light green color
-            />
-            <CustomBox
-              title="High"
+              <CustomBox
+              title="Hard"
               imageUrl={large}
-              onClick={() => handleLineBoxClick('High')}
-              isSelected={selections.energyLevel === 'High'}
+              onClick={() => handleLineBoxClick('Average')}
+              isSelected={selections.energyLevel === 'Average'}
               borderCircleSize="55px"
               imageSize="18px"
-              borderCircleColor="#B1E4F5" // Light blue color
-            />
-            <CustomBox
-              title="Super High"
-              imageUrl={moreLarge}
-              onClick={() => handleLineBoxClick('Super High')}
-              isSelected={selections.energyLevel === 'Super High'}
-              borderCircleSize="55px"
-              imageSize="18px"
-              borderCircleColor="grey" // Light grey-blue color
+              borderCircleColor="#F6F1B2" // Light green-yellow color
             />
           </div>
         </div>
@@ -111,4 +92,4 @@ function Energylevel() {
   );
 }
 
-export default Energylevel;
+export default PhysicalActivity;
