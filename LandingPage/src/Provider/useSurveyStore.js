@@ -19,7 +19,8 @@ const useSurveyStore = create((set) => ({
     age: loadFromLocalStorage('age', ''),
     energyLevel: loadFromLocalStorage('energyLevel', null),
     mealTypes: loadFromLocalStorage('mealTypes', []),
-    meals: loadFromLocalStorage('meals', []), // Added meals to the selections
+    meals: loadFromLocalStorage('meals', []),
+    mealPreparationTime: loadFromLocalStorage('mealPreparationTime', []),
     // Add more fields if necessary
   },
   selectedIngredients: loadFromLocalStorage('selectedIngredients', []),
@@ -62,7 +63,8 @@ const useSurveyStore = create((set) => ({
         age: '',
         energyLevel: null,
         mealTypes: [],
-        meals: [], // Reset meals field
+        meals: [],
+        mealPreparationTime: [],
         // Reset other fields if necessary
       },
       selectedIngredients: [],
@@ -75,7 +77,7 @@ const useSurveyStore = create((set) => ({
     localStorage.removeItem('mealTypes');
     localStorage.removeItem('selectedIngredients');
     localStorage.removeItem('meals');
-    // Add more fields to remove as necessary
+    localStorage.removeItem('mealPreparationTime');
   },
 }));
 

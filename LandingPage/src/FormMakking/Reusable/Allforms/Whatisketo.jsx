@@ -1,41 +1,35 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import ProgressCard from "../ProgressCard";
-import BackgroundLayout from "../Backgroung"; // Fixed typo in import
-import useSurveyStore from '../../../Provider/useSurveyStore'; // Import Zustand store
+import BackgroundLayout from "../Backgroung";
+import useSurveyStore from "../../../Provider/useSurveyStore";
+import icon from "../../../assets/images/placeholder-icon.png";
+import useStepStore from "../../../Provider/useStepStore"; // Zustand store for steps
 
 const Whatisketo = () => {
   const totalSteps = 12;
-  const { currentStep, setCurrentStep } = useSurveyStore(); // Use Zustand store
+  const { currentStep, setCurrentStep } = useSurveyStore(); // Zustand for survey management
+  const { incrementStep } = useStepStore(); // Zustand for steps
   const navigate = useNavigate(); // Initialize useNavigate
-
-  useEffect(() => {
-    // Load saved step from Zustand if it exists
-    // If using localStorage as a fallback, you can load it here
-    // localStorage.getItem("currentStep") and set it using setCurrentStep
-  }, [setCurrentStep]);
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
-      const nextStep = currentStep + 1;
-      setCurrentStep(nextStep); // Update step in Zustand store
-      // Save step to localStorage as a fallback
-      localStorage.setItem("currentStep", nextStep);
+      // Increment step in the Zustand step store
     }
-
+    incrementStep();
     // Navigate to the next step (e.g., Energy Level)
-    navigate('/energy-level'); // Use navigate to change route
+    navigate("/energy-level");
   };
 
   const handleClose = () => {
-    // Handle the close button functionality here (e.g., navigate back or close modal)
+    // Handle the close button functionality (e.g., navigate back)
     window.history.back();
   };
 
   return (
     <BackgroundLayout onClose={handleClose}>
-      <div className="">
-        <div className="mt-145px w-[697px] h-[570px] bg-white p-8 rounded-lg shadow-md">
+      <div className="flex justify-center items-center ">
+        <div className="w-[697px] h-[600px] bg-white p-8 rounded-tl-[30px] rounded-br-lg border border-gray-300 shadow-md">
           {/* Upper Progress Card */}
           <ProgressCard
             title="Keto diet"
@@ -48,10 +42,7 @@ const Whatisketo = () => {
             <p className="mb-4">
               The ketogenic diet, also known as the keto diet, is a high-fat,
               low-carbohydrate diet that has been shown to promote weight loss
-              and improve various health conditions. The goal of the diet is to
-              induce a state of ketosis in the body, in which the body switches
-              from using glucose as its primary source of energy to using
-              ketones, which are produced by the liver from stored fat.
+              and improve various health conditions.
             </p>
 
             <h3 className="text-lg font-bold text-center my-4">
@@ -59,30 +50,48 @@ const Whatisketo = () => {
             </h3>
 
             {/* Benefits List */}
-            <ul className="list-disc space-y-3 ml-6">
-              <li>
-                Weight loss: The keto diet can help reduce appetite and increase
-                fat burning.
+            <ul className="list-none space-y-3 ml-6">
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Weight loss: The keto diet can help reduce appetite and
+                  increase fat burning.
+                </span>
               </li>
-              <li>
-                Improved blood sugar control: It can help lower blood sugar and
-                improve insulin sensitivity.
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Improved blood sugar control: It can help lower blood sugar
+                  and improve insulin sensitivity.
+                </span>
               </li>
-              <li>
-                Increased energy: Many people report feeling more energetic on
-                the keto diet.
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Increased energy: Many people report feeling more energetic on
+                  the keto diet.
+                </span>
               </li>
-              <li>
-                Reduced inflammation: It may help reduce inflammation, common in
-                chronic diseases.
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Reduced inflammation: It may help reduce inflammation, common
+                  in chronic diseases.
+                </span>
               </li>
-              <li>
-                Improved heart health: Keto may help lower cholesterol and
-                triglyceride levels.
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Improved heart health: Keto may help lower cholesterol and
+                  triglyceride levels.
+                </span>
               </li>
-              <li>
-                Potential anti-cancer effects: Some studies suggest it has
-                anti-cancer properties.
+              <li className="flex items-center">
+                <img src={icon} alt="icon" className="mr-2" />
+                <span>
+                  Potential anti-cancer effects: Some studies suggest it has
+                  anti-cancer properties.
+                </span>
               </li>
             </ul>
 
@@ -90,7 +99,7 @@ const Whatisketo = () => {
             <div className="flex justify-center mt-6">
               <button
                 onClick={handleNext}
-                className="bg-green-500 text-white px-8 py-2 rounded-full hover:bg-green-600"
+                className="bg-green-500 text-white px-8 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
               >
                 Next
               </button>

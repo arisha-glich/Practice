@@ -1,32 +1,44 @@
 import React, { useEffect } from 'react';
 import ProgressCard from '../ProgressCard';
-import LineBox from '../LineBox';
 import BackgroundLayout from '../../Reusable/Backgroung';
-import useSurveyStore from '../../../Provider/useSurveyStore'; // Update import to use Zustand
-import { useNavigate } from 'react-router-dom'; // For navigation
+import useSurveyStore from '../../../Provider/useSurveyStore';
+import useStepStore from '../../../Provider/useStepStore'; // Zustand store for steps
+import { useNavigate } from 'react-router-dom';
+import LineBox from '../../Reusable/LineBox'; // Import the LineBox component
 
 function KetoDiet() {
-  const { selections, updateSelection } = useSurveyStore(); // Get Zustand store data
+  const { selections, updateSelection } = useSurveyStore();
+  const { incrementStep } = useStepStore(); // Zustand for steps
+ 
   const navigate = useNavigate();
 
-  const handleLineBoxClick = (option) => {
-    // Update selection in Zustand store
+  const handleOptionClick = (option) => {
+    // Save selected option to Zustand store and local storage
     updateSelection('ketoDiet', option);
-
-    // Save selected option to local storage
     localStorage.setItem('ketoDiet', option);
 
-    // Navigate to the next step
-    navigate('/fimilarketodiet'); 
+    // Increment step and navigate to the next form
+    incrementStep();
+    navigate('/fimilarketodiet');
   };
 
+ 
+  // Load saved selection from localStorage on mount
   useEffect(() => {
-    // Retrieve the saved selection from local storage
     const savedSelection = localStorage.getItem('ketoDiet');
     if (savedSelection) {
       updateSelection('ketoDiet', savedSelection);
     }
-  }, [updateSelection]); // Dependency array includes updateSelection to avoid redundant updates
+  }, [updateSelection]);
+
+  
+  const options = [
+    { title: 'Lose Weight' },
+    { title: 'Gain Weight' },
+    { title: 'Maintain Weight' },
+    { title: 'Reverse Diet' },
+    { title: "I Don't Know" },
+  ];
 
   return (
     <BackgroundLayout>
@@ -36,18 +48,18 @@ function KetoDiet() {
           <ProgressCard
             title="Keto Diet"
             description="How familiar are you with the Keto diet?"
-            totalSteps={12}
+            totalSteps={12} // Total steps in the progress
+         
           />
 
-          {/* Lower LineBoxes */}
+          {/* Line Boxes for Options */}
           <div className="flex flex-col mt-6 space-y-4 w-full">
-            {['Lose Weight', 'Gain Weight', 'Maintain Weight', 'Reverse Diet', "I Don't Know"].map((option) => (
+            {options.map((option) => (
               <LineBox
-                key={option}
-                title={option}
-                isSelected={selections.ketoDiet === option} // Mark selected
-                onClick={() => handleLineBoxClick(option)}
-                aria-selected={selections.ketoDiet === option ? 'true' : 'false'}
+                key={option.title}
+                title={option.title}
+                isSelected={selections.ketoDiet === option.title} // Check if this option is selected
+                onClick={() => handleOptionClick(option.title)} // Handle click
               />
             ))}
           </div>

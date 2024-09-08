@@ -16,10 +16,12 @@ import ProgressCard from "../ProgressCard";
 import BackgroundLayout from "../Backgroung";
 import { useNavigate } from "react-router-dom";
 import useSurveyStore from "../../../Provider/useSurveyStore"; // Import Zustand store
+import useStepStore from '../../../Provider/useStepStore'; // Zustand store for steps
 
 const Ingredients = () => {
   const { selectedIngredients, updateIngredients } = useSurveyStore(); // Use Zustand store
   const navigate = useNavigate();
+  const { incrementStep } = useStepStore(); // Zustand for steps
 
   const handleIngredientClick = (ingredient) => {
     updateIngredients(ingredient); // Update Zustand store
@@ -27,8 +29,12 @@ const Ingredients = () => {
 
   const handleNextClick = () => {
     // Save selected ingredients to localStorage or handle as needed
-    localStorage.setItem("selectedIngredients", JSON.stringify(selectedIngredients));
+    localStorage.setItem(
+      "selectedIngredients",
+      JSON.stringify(selectedIngredients)
+    );
 
+    incrementStep();
     // Navigate to the next screen
     navigate("/physical-activity"); // Update the path for navigation
   };
@@ -52,7 +58,7 @@ const Ingredients = () => {
         />
 
         {/* Reusable Option Boxes */}
-        <div className="flex flex-col items-center space-y-4 overflow-auto mt-8">
+        <div className="flex flex-col items-center space-y-4  mt-8">
           <OptionBox
             image={food}
             title="I eat all of them"

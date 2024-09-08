@@ -1,38 +1,30 @@
-import React, { useState } from 'react';
-
-// Example image imports (adjust the paths to your images)
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import backIcon from '../../assets/images/next.png';
 import Stroke from '../../assets/images/Stroke.png';
 import Dot from '../../assets/images/Dot.png';
+import useStepStore from '../../Provider/useStepStore.js'; // Zustand store for steps
 
-const ProgressCard = ({ title, description, totalSteps }) => {
-  const [currentStep, setCurrentStep] = useState(1); // Set to 2 as per the image
+const ProgressCard = ({ title, description }) => {
+  const navigate = useNavigate();
 
-  // Increment and decrement step functions
-  const incrementStep = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const decrementStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
+  // Zustand store to manage steps
+  const { currentStep, totalSteps, incrementStep, decrementStep } = useStepStore();
 
   // Handle the back button functionality
   const goBack = () => {
-    window.history.back();
+    if (currentStep > 1) { // Only decrement if not at the first step
+        decrementStep();
+      }
+      navigate(-1); // Navigate back to the previous page// Navigate back to the previous page
   };
 
   return (
-    <div className="w-full flex flex-col items-center bg-white  rounded-lg">
+    <div className="w-full flex flex-col items-center bg-white rounded-lg">
       {/* Container for Button and Title */}
       <div className="flex items-center justify-between w-full px-4 mb-4">
         {/* Back button with image */}
         <button onClick={goBack} className="flex items-center">
-          {/* Image inside button */}
           <img src={backIcon} alt="Back" className="w-4 h-4 mr-2" />
         </button>
 
@@ -55,11 +47,15 @@ const ProgressCard = ({ title, description, totalSteps }) => {
 
       {/* Dots/Dashes Progress Visualization */}
       <div className="flex items-center space-x-1 mb-4">
-        <img src={Dot} alt="Dot" className="w-2 h-2" />
-        <img src={Stroke} alt="Stroke" className="w-7 h-2" />
-        <img src={Dot} alt="Dot" className="w-2 h-2" />
-        <img src={Dot} alt="Dot" className="w-2 h-2" />
-        <img src={Dot} alt="Dot" className="w-2 h-2" />
+        {/* Dots and Stroke: You can customize this logic further to show the right dots/strokes */}
+        {Array.from({ length: totalSteps }).map((_, index) => (
+          <img
+            key={index}
+            src={index < currentStep ? Stroke : Dot} // Show Stroke for completed steps and Dot for remaining
+            alt={index < currentStep ? 'Stroke' : 'Dot'}
+            className={index < currentStep ? 'w-7 h-2' : 'w-2 h-2'}
+          />
+        ))}
       </div>
 
       {/* Description */}

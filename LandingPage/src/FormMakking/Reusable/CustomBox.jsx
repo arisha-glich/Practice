@@ -33,7 +33,7 @@ const CustomBox = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: borderCircleColor,
           top: "22px",
-          left: "32px",
+          left: "56px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

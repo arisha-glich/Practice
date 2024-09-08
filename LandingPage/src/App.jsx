@@ -11,6 +11,8 @@ import Mealtype from "./FormMakking/Reusable/Allforms/MealType";
 import Ingredients from "./FormMakking/Reusable/Allforms/Ingredients";
 import PhysicalActivity from "./FormMakking/Reusable/Allforms/PhsyicalActivity";
 import Result from "./FormMakking/Reusable/Allforms/Result";
+import AgeHeight from "./FormMakking/Reusable/Allforms/AgeHeight";
+import Weight from "./FormMakking/Reusable/Allforms/Weight";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/meal-type" element={<Mealtype />} />
         <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/physical-activity" element={<PhysicalActivity />} />
+        <Route path="/age-height" element={<AgeHeight/>} />
+        <Route path="/weight" element={<Weight/>} />
         <Route path="/result" element={<Result />} />
       </Routes>
     </Router>

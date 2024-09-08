@@ -17,12 +17,22 @@ const BackgroundLayout = ({ children }) => {
   };
 
   return (
-    <div className="w-full h-screen bg-[#F0F4F8] flex flex-col items-center justify-center absolute">
+    <div className="w-full h-screen bg-[#F0F4F8] flex flex-col items-center justify-center relative">
+      {/* Logo */}
       <img src={logo} alt="Logo" className="absolute top-12 w-100 h-auto" />
-      <button onClick={handleClose} className="absolute top-12 right-6">
-        <img src={cross2} alt="Close" className="w-6 h-6 bg-red-300 rounded-sm" />
+
+      {/* Close Button */}
+      <button
+        onClick={handleClose}
+        className="absolute top-10 right-10  bg-red-100 hover:bg-red-200 rounded-lg p-2"
+      >
+        <img src={cross2} alt="Close" className="w-6 h-6" />
       </button>
-      <div>{children}</div>
+
+      {/* Main Scrollable Content */}
+      <div className="w-full h-full overflow-y-auto flex justify-center items-center">
+        {children}
+      </div>
     </div>
   );
 };

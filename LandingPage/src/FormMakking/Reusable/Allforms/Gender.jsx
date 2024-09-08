@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom";
 import BoxComponent from "../BoxGender";
 import male from "../../../assets/images/mars.png";
 import female from "../../../assets/images/venus.png";
+import useStepStore from '../../../Provider/useStepStore'; // Zustand store for steps
+
 
 const Gender = () => {
   const { selections, updateSelection } = useSurveyStore();
+  const { incrementStep } = useStepStore(); // Zustand for steps
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +29,7 @@ const Gender = () => {
   const handleBoxClick = (gender) => {
     updateSelection("gender", gender);
     localStorage.setItem("gender", gender);
+  incrementStep();
     navigate("/keto-diet");
   };
 
